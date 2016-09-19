@@ -1,3 +1,19 @@
-<h1>SAMPLE HEADER BRUH</h1>
+<% @movie = random_movie %>
 
-<p>This is a placeholder for the home page</p>
+<% if logged_in? %>
+  <%= render 'static_pages/logged_in_home' %>
+<% else %>
+  <%= render 'static_pages/logged_out_home' %>
+<% end %>
+
+<div class="row">
+  <div class="col-md-8">
+  	<%= render @movie %>
+  	<%= link_to "NEXT MOVIE", root_path, class: "btn btn-primary" %>
+  </div>
+  <aside class="col-md-4">
+  	<section class="filters">
+  	  <%= render 'layouts/filters' %>
+  	</section>
+  </aside>
+</div>

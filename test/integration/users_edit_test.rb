@@ -58,7 +58,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     assert_redirected_to edit_user_path(@user)
     log_in_as(@user)
-    assert_redirected_to user_path(@user)
+    assert_redirected_to root_url
   end
 
 end

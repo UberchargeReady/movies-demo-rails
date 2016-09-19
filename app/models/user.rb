@@ -71,6 +71,16 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
 
+  # TODO
+  # get the next movie recommendation based on history and filters
+  def next_movie
+  end 
+
+  # TODO
+  # get the previously recommended movie
+  def previous_movie
+  end
+
   private
 
     # Converts email to all lower-case.

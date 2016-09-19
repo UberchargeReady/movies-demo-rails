@@ -1,7 +1,8 @@
 class StaticPagesController < ApplicationController
+  include StaticPagesHelper
 
-	def home
-
-	end
+  def home
+    @movie = random_movie
+  end
 	
 end

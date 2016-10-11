@@ -32,6 +32,7 @@ gem 'bcrypt',         '3.1.11'
 gem 'bootstrap-sass', '3.3.6'
 gem 'faker',          '1.6.3'
 gem 'will_paginate',           '3.1.0'
+gem 'rest-client'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

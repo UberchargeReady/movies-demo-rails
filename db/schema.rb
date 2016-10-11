@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160907100030) do
+ActiveRecord::Schema.define(version: 20161011183502) do
+
+  create_table "genres", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_genres_on_name", unique: true
+  end
+
+  create_table "movie_genres", force: :cascade do |t|
+    t.integer  "movie_id"
+    t.integer  "genre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_movie_genres_on_genre_id"
+    t.index ["movie_id", "genre_id"], name: "index_movie_genres_on_movie_id_and_genre_id", unique: true
+    t.index ["movie_id"], name: "index_movie_genres_on_movie_id"
+  end
 
   create_table "movies", force: :cascade do |t|
     t.string   "title"
@@ -25,6 +42,15 @@ ActiveRecord::Schema.define(version: 20160907100030) do
     t.string   "actors"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.boolean  "on_netflix"
+    t.boolean  "on_amazon"
+    t.boolean  "on_hulu"
+    t.boolean  "on_google_play"
+    t.boolean  "on_itunes"
+    t.boolean  "on_hbo"
+    t.boolean  "on_youtube"
+    t.boolean  "on_vudu"
+    t.boolean  "on_cinema_now"
   end
 
   create_table "users", force: :cascade do |t|

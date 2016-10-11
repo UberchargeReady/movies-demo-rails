@@ -11,6 +11,10 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
+#button_next_movie {
+  background: green;
+}
+
 /* universal */
 
 .thick-text {
@@ -261,5 +265,13 @@ input {
     overflow: auto;
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
+  }
+}
+
+/* Filters */
+
+.filters {
+  li {
+    padding: 10px;
   }
 }

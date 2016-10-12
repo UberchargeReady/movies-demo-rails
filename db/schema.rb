@@ -10,13 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161011183502) do
+ActiveRecord::Schema.define(version: 20161012123448) do
 
   create_table "genres", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_genres_on_name", unique: true
+  end
+
+  create_table "industry_people", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "birthday"
+    t.integer  "year_born"
+    t.string   "birthplace"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_industry_people_on_name"
+  end
+
+  create_table "movie_actors", force: :cascade do |t|
+    t.integer  "movie_id"
+    t.integer  "industry_person_id"
+    t.boolean  "is_starring",        default: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.index ["industry_person_id"], name: "index_movie_actors_on_industry_person_id"
+    t.index ["movie_id", "industry_person_id"], name: "index_movie_actors_on_movie_id_and_industry_person_id", unique: true
+    t.index ["movie_id"], name: "index_movie_actors_on_movie_id"
+  end
+
+  create_table "movie_directors", force: :cascade do |t|
+    t.integer  "movie_id"
+    t.integer  "industry_person_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["industry_person_id"], name: "index_movie_directors_on_industry_person_id"
+    t.index ["movie_id", "industry_person_id"], name: "index_movie_directors_on_movie_id_and_industry_person_id", unique: true
+    t.index ["movie_id"], name: "index_movie_directors_on_movie_id"
   end
 
   create_table "movie_genres", force: :cascade do |t|
@@ -34,12 +65,10 @@ ActiveRecord::Schema.define(version: 20161011183502) do
     t.datetime "released"
     t.string   "poster_url"
     t.integer  "runtime_in_mins"
-    t.string   "director"
     t.string   "mpaa_rating"
     t.text     "plot"
     t.integer  "year"
     t.string   "writer"
-    t.string   "actors"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.boolean  "on_netflix"

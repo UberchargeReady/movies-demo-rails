@@ -5,12 +5,10 @@ class CreateMovies < ActiveRecord::Migration[5.0]
       t.datetime :released
       t.string :poster_url
       t.integer :runtime_in_mins
-      t.string :director
       t.string :mpaa_rating
       t.text :plot
       t.integer :year
       t.string :writer
-      t.string :actors
 
       t.timestamps
     end
